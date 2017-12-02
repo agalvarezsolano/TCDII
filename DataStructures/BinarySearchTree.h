@@ -10,7 +10,7 @@
 template <class T>
 class BinarySearchTree {
 private:
-    BinaryTreeNode<T> *root = NULL; //raiz del arbol
+    BinaryTreeNode<T> *root = NULL;
 
     BinaryTreeNode<T>* getElement(T element, BinaryTreeNode<T> *node);
 

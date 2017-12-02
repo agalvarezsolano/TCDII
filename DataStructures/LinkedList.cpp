@@ -7,15 +7,12 @@
 
 using namespace std;
 
-/// Constructor
-/// \tparam T Tipo de dato de la lista
+
 template <class T>
 LinkedList<T>::LinkedList() {
     size = 0;
 }
 
-/// Destructor
-/// \tparam T Tipo de dato de la lista
 template <class T>
 LinkedList<T>::~LinkedList() {
     for (int i = 0; i < (size - 1); ++i) {
@@ -31,9 +28,6 @@ int LinkedList<T>::getSize() {
 }
 
 template <class T>
-/// Metodo para insertar un nuevo elemento al inicio de la lista.
-/// \tparam T Tipo del dato que se desea insertar.
-/// \param data Dato que se desea insertar.
 void LinkedList<T>::insertAtFirst(T data) {
     Node<T> *newNode = new Node<T>(data);
     if(first == NULL){
@@ -45,9 +39,6 @@ void LinkedList<T>::insertAtFirst(T data) {
     size++;
 }
 
-/// Metodo que inserta un nuevo elemento al final de la lista
-/// \tparam T Tipo de dato del elemento
-/// \param data Dato del nuevo elemento
 template <class T>
 void LinkedList<T>::insertAtEnd(T data) {
     Node<T> *newNode = new Node<T>(data);
@@ -63,10 +54,6 @@ void LinkedList<T>::insertAtEnd(T data) {
     size++;
 }
 
-/// Metodo que inserta un nuevo elemento en una posicion especifica
-/// \tparam T Tipo de dato del nuevo elemento
-/// \param data Dato del nuevo elemento
-/// \param position Posicion para el nuevo elemento
 template <class T>
 void LinkedList<T>::insertElement(T data, int position) {
     Node<T> *newNode = new Node<T>(data);
@@ -74,18 +61,18 @@ void LinkedList<T>::insertElement(T data, int position) {
 
     if(first != NULL) {
         if (1 <= position && position < size) {
-            for (int i = 0; i < (position - 1); ++i) { //Se detiene en el nodo anterior al de la posición deseada
+            for (int i = 0; i < (position - 1); ++i) {
                 current = current->getNext();
             }
-            newNode->setNext(current->getNext()); //Al nuevo nodo se le asigna la referencia al nodo siguiente
-            current->setNext(newNode); //Al nodo anterior al nuevo nodo se le asigna la referencia al nuevo nodo
+            newNode->setNext(current->getNext());
+            current->setNext(newNode);
         }
-        if (position == 0) { //caso en que la posicion deseada es como primer elemento
+        if (position == 0) {
             newNode->setNext(first);
             first = newNode;
         }
         if (size <= position) {
-            for (int i = 0; i < (size - 1); ++i) { //Se detiene en el último nodo de la lista
+            for (int i = 0; i < (size - 1); ++i) {
                 current = current->getNext();
             }
             current->setNext(newNode);
@@ -96,10 +83,6 @@ void LinkedList<T>::insertElement(T data, int position) {
     size++;
 }
 
-/// Metodo para obtener el elemento de una posicion especifica
-/// \tparam T Tipo de dato del elemento deseado
-/// \param position Posicion del elemento deseado
-/// \return El elemento deseado
 template <class T>
 Node<T>* LinkedList<T>::getElement(int position) {
     Node<T> *current = first;
@@ -114,26 +97,22 @@ Node<T>* LinkedList<T>::getElement(int position) {
     return current;
 }
 
-/// Metodo para establecer el dato que se estaba guardando en una posicion especifica
-/// \tparam T Tipo del dato que se desea guardar
-/// \param element Elemento que se desea almacenar
-/// \param position Posicion en la que se desea almacenar el elemento
 template <class T>
 void LinkedList<T>::setElement(T element, int position) {
     Node<T> *current = first;
 
     if (first != NULL && position < size) {
         if (1 <= position && position < size) {
-            for (int i = 0; i < (position - 1); i++) { //Se detiene en el nodo anterior al de la posición deseada
+            for (int i = 0; i < (position - 1); i++) {
                 current = current->getNext();
             }
             current->getNext()->setData(element);
         }
-        if (position == 0) { //caso en que la posicion deseada es como primer elemento
+        if (position == 0) {
             first->setData(element);
         }
         if (size <= position) {
-            for (int i = 0; i < (size - 1); i++) { //Se detiene en el último nodo de la lista
+            for (int i = 0; i < (size - 1); i++) {
                 current = current->getNext();
             }
             current->getNext()->setData(element);
@@ -141,9 +120,6 @@ void LinkedList<T>::setElement(T element, int position) {
     }
 }
 
-/// Metodo para eliminar un elemento en una posicion especifica
-/// \tparam T Tipo de dato del los elementos de la lista
-/// \param position Posicion del elemento a eliminar
 template <class T>
 void LinkedList<T>::deleteElement(int position) {
     if (position == 0 && size > 0) {

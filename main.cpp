@@ -1,66 +1,28 @@
 #include <iostream>
 #include "DataStructures/LinkedList.cpp"
 #include "Sorts/SortAlgorithms.cpp"
-#include <ctime>
+#import <ctime>
+
 
 using namespace std;
 
 int main() {
     LinkedList<int> *list = new LinkedList<int>();
-   // list->insertAtEnd(1);
-    list->insertAtEnd(3);
-    list->insertAtEnd(8);
-    list->insertAtEnd(4);
-    list->insertAtEnd(5);
-    list->insertAtEnd(2);
-/*
-    list->insertAtEnd(5);
-    list->insertAtEnd(7);
-    list->insertAtEnd(9);
-    list->insertAtEnd(10);
-    list->insertAtEnd(6);
-
-    list->insertAtEnd(3);
-    list->insertAtEnd(8);
-    list->insertAtEnd(4);
-    list->insertAtEnd(5);
-    list->insertAtEnd(2);
-
-    list->insertAtEnd(5);
-    list->insertAtEnd(7);
-    list->insertAtEnd(9);
-    list->insertAtEnd(10);
-    list->insertAtEnd(6);
-
-    list->insertAtEnd(3);
-    list->insertAtEnd(8);
-    list->insertAtEnd(4);
-    list->insertAtEnd(5);
-    list->insertAtEnd(2);
-
-    list->insertAtEnd(5);
-    list->insertAtEnd(7);
-    list->insertAtEnd(9);
-    list->insertAtEnd(10);
-    list->insertAtEnd(6);
 
 
-    list->insertAtEnd(3);
-    list->insertAtEnd(8);
-    list->insertAtEnd(4);
-    list->insertAtEnd(5);
-    list->insertAtEnd(2);
-*/
     list->printList();
-
     unsigned t0 = clock();
-    SortAlgorithms<int>::bubbleSort(list);
+
+    //SortAlgorithms<int>::mergeSort(list);
+
+
     unsigned t1 = clock();
 
     list->printList();
 
-    int time = int(t1- t0);
-    cout << time << endl;
+    double time = double(t1- t0)/1000;
+
+    cout << time<< endl;
 
     return 0;
 }

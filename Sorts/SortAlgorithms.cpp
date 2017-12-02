@@ -3,9 +3,7 @@
 //
 
 #include "SortAlgorithms.h"
-/// Metodo que implementa el algoritmo de ordenamiento burbuja
-/// \tparam T Tipo de dato de la lista
-/// \param list Lista que se desea ordenar
+
 template <class T>
 void SortAlgorithms<T>::bubbleSort(LinkedList<T> *list) {
     for(int i = list->getSize()- 1; i > 0; i--){
@@ -21,21 +19,18 @@ void SortAlgorithms<T>::bubbleSort(LinkedList<T> *list) {
     }
 }
 
-/// Metodo que implementa el algoritmo de ordenamiento por seleccion
-/// \tparam T Tipo de dato de la lista
-/// \param list Lista que se desea ordenar
+
 template <class T>
 void SortAlgorithms<T>::selectionSort(LinkedList<T> *list) {
     for(int i = 0; i < list->getSize() - 1; i++){
 
-        //Se busca la posicion del elemento menor en la list
+
         int posMin = i;
         for (int x = i; x < list->getSize(); x++) {
             if (list->getElement(posMin)->getData() > list->getElement(x)->getData()) {
                 posMin = x;
             }
         }
-        //Se hace un swap de los elementos
         Node<T> *node1 = list->getElement(i);
         Node<T> *node2 = list->getElement(posMin);
         T temp = node1->getData();
@@ -44,9 +39,6 @@ void SortAlgorithms<T>::selectionSort(LinkedList<T> *list) {
     }
 }
 
-/// Metodo que implementa el algoritmo de ordenamiento por insercion
-/// \tparam T Tipo de dato de la lista
-/// \param list Lista que se desea ordenar
 template <class T>
 void SortAlgorithms<T>::insertionSort(LinkedList<T> *list) {
     for(int i = 1; i < list->getSize(); i++){
@@ -63,23 +55,19 @@ void SortAlgorithms<T>::insertionSort(LinkedList<T> *list) {
     }
 }
 
-/// Metodo que implementa el algoritmo de ordenamiento MergeSort
-/// \tparam T Tipo de dato de la lista
-/// \param list Lista que se desea ordenar
-/// \return La lista ordenada
+
 template <class T>
 LinkedList<T>* SortAlgorithms<T>::mergeSort(LinkedList<T> *list) {
-    if(list->getSize() > 1){ //Hay algo que ordenar
+    if(list->getSize() > 1){
         int nElementsLeft = list->getSize() / 2;
-        //int nElementsRight = list->getSize() - nElementsLeft;
-        LinkedList<T> *leftList = new LinkedList<T>(); //Lista de los elementos a la izquierda
-        LinkedList<T> *rightList = new LinkedList<T>(); //Lista de los elemento a la derecha
+        LinkedList<T> *leftList = new LinkedList<T>();
+        LinkedList<T> *rightList = new LinkedList<T>();
 
-        //Copiamos los elementos de la izquierda pertenecientes a la list original
+
         for(int i = 0; i < nElementsLeft; i++){
             leftList->insertElement(list->getElement(i)->getData(), i);
         }
-        //Copiamos los elementos de la derecha pertenecientes a la list original
+
         for(int i = nElementsLeft; i < list->getSize(); i++){
             rightList->insertElement(list->getElement(i)->getData(), i - nElementsLeft);
         }
@@ -104,7 +92,7 @@ LinkedList<T>* SortAlgorithms<T>::mergeSort(LinkedList<T> *list) {
                 k++;
             }
         }
-        //Se unen las listas
+
         while (leftList->getSize() != j){
             Node<T> *node1 = list->getElement(i);
             Node<T> *node2 = leftList->getElement(j);
@@ -123,19 +111,11 @@ LinkedList<T>* SortAlgorithms<T>::mergeSort(LinkedList<T> *list) {
     return list;
 }
 
-/// Metodo que llama a al metodo que implementa el algoritmo de ordenamiento QuickSort
-/// \tparam T Tipo de dato de la lista
-/// \param list Lista que se desea ordenar
 template <class T>
 void SortAlgorithms<T>::quickSort(LinkedList<T> *list) {
     quickSort(list, 0, list->getSize() -1);
 }
 
-/// Metodo que implementa el algoritmo de ordenamiento QuickSort
-/// \tparam T Tipo de dato de la lista
-/// \param list Lista que se desea ordenar
-/// \param first Posicion del primer elemento en la sublista actual
-/// \param last Posicion del ultimo elemento en la sublista actual
 template <class T>
 void SortAlgorithms<T>::quickSort(LinkedList<T> *list, int first, int last) {
     int i = first;
@@ -149,7 +129,7 @@ void SortAlgorithms<T>::quickSort(LinkedList<T> *list, int first, int last) {
             j--;
         }
 
-        //Se hace el intercambio
+
         if(i <= j){
             Node<T> *node1 = list->getElement(i);
             Node<T> *node2 = list->getElement(j);

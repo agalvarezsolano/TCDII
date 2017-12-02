@@ -12,18 +12,11 @@ BinaryTreeNode<T>* BinarySearchTree<T>::getRoot() {
     return root;
 }
 
-/// Metodo que encuentra el descendiente menor del arbol
-/// \tparam T Tipo de dato del arbol
-/// \return El descendiente menor del nodo ingresado
 template <class T>
 BinaryTreeNode<T>* BinarySearchTree<T>::findMin() {
     return findMin(root);
 }
 
-/// Metodo que encuentra el descendiente menor de un nodo
-/// \tparam T Tipo de dato del arbol
-/// \param node Nodo actual en el recorrido
-/// \return El hijo menor del nodo ingresado
 template <class T>
 BinaryTreeNode<T>* BinarySearchTree<T>::findMin(BinaryTreeNode<T> *node) {
     if(node == NULL){
@@ -35,19 +28,11 @@ BinaryTreeNode<T>* BinarySearchTree<T>::findMin(BinaryTreeNode<T> *node) {
     }
 }
 
-/// Metodo para insertar un nuevo elemento en el arbol
-/// \tparam T Tipo de dato del arbol
-/// \param element Elemento a insertar
 template <class T>
 void BinarySearchTree<T>::insert(T element) {
     root = insert(element, root);
 }
 
-/// Metodo recursivo para insetar un nuevo elemento en el arbol
-/// \tparam T Tipo de dato del arbol
-/// \param element Elemento a insertar
-/// \param current Nodo actual
-/// \return Se retorna el current
 template <class T>
 BinaryTreeNode<T>* BinarySearchTree<T>::insert(T element, BinaryTreeNode<T> *current) {
     if(current == NULL){
@@ -61,46 +46,29 @@ BinaryTreeNode<T>* BinarySearchTree<T>::insert(T element, BinaryTreeNode<T> *cur
     return current;
 }
 
-/// Metodo para obtener un elemento del arbol
-/// \tparam T Tipo de dato del arbol
-/// \param element Elemento que se desea obtener
-/// \return Elemento que se desea obtener
 template <class T>
 BinaryTreeNode<T>* BinarySearchTree<T>::getElement(T element) {
     return getElement(element, root);
 }
 
-///
-/// \tparam T Metodo recursivo para obtener un elemento del arbol
-/// \param element Elemento que se desea obtener
-/// \param node Nodo actual en el recorrido
-/// \return Elemento que se desea obtener
 template <class T>
 BinaryTreeNode<T>* BinarySearchTree<T>::getElement(T element, BinaryTreeNode<T> *node) {
     if(node == NULL){
         return NULL;
-    } else if(node->getData() == element){ //Caso en el que se ha llegado al elemento deseado
+    } else if(node->getData() == element){
         return node;
-    } else if(node->getData() < element){ //Si el dato del nodo actual es menor al elemento deseado
-        return getElement(element, node->getRight()); //Se continua con el hijo derecho del nodo actual
-    } else{ //El dato del nodo actual es mayor al elemento deseado
-        return getElement(element, node->getLeft()); //Se continua con el hijo izquierdo del nodo actual
+    } else if(node->getData() < element){
+        return getElement(element, node->getRight());
+    } else{
+        return getElement(element, node->getLeft());
     }
 }
 
-/// Metodo para eliminar un elemento del arbol
-/// \tparam T Tipo de dato del arbol
-/// \param element Elemento a eliminar
 template <class T>
 void BinarySearchTree<T>::remove(T element) {
     root = remove(element, root);
 }
 
-/// Metodo recursivo para eliminar un elemento del arbol
-/// \tparam T Tipo de dato del arbol
-/// \param element Elemento a eliminar
-/// \param node Nodo actual
-/// \return Nodo correspondiente segun la eliminacion
 template <class T>
 BinaryTreeNode<T>* BinarySearchTree<T>::remove(T element, BinaryTreeNode<T> *node) {
     if(node == NULL){
@@ -119,10 +87,6 @@ BinaryTreeNode<T>* BinarySearchTree<T>::remove(T element, BinaryTreeNode<T> *nod
     return node;
 }
 
-
-/// Metodo para imprimir el arbol en pre-orden
-/// \tparam T Tipo de dato del arbol
-/// \param node Nodo actual en el recorrido
 template <class T>
 void BinarySearchTree<T>::printPreOrder(BinaryTreeNode<T> *node) {
     if(node != NULL){
@@ -132,9 +96,6 @@ void BinarySearchTree<T>::printPreOrder(BinaryTreeNode<T> *node) {
     }
 }
 
-/// Metodo para imprimir el arbol en orden
-/// \tparam T Tipo de dato del arbol
-/// \param node Nodo actual en el recorrido
 template <class T>
 void BinarySearchTree<T>::printInOrder(BinaryTreeNode<T> *node) {
     if(node != NULL){
@@ -144,9 +105,6 @@ void BinarySearchTree<T>::printInOrder(BinaryTreeNode<T> *node) {
     }
 }
 
-/// Metodo para imprimir el arbol en post-orden
-/// \tparam T Tipo de dato del arbol
-/// \param node Nodo actual en el recorrido
 template <class T>
 void BinarySearchTree<T>::printPostOrder(BinaryTreeNode<T> *node) {
     if(node != NULL){
