@@ -10,7 +10,7 @@
 template <class T>
 class BinarySearchTree {
 private:
-    BinaryTreeNode<T> *root = NULL;
+    BinaryTreeNode<T> *root;
 
     BinaryTreeNode<T>* getElement(T element, BinaryTreeNode<T> *node);
 
@@ -21,6 +21,10 @@ private:
     BinaryTreeNode<T>* remove(T element, BinaryTreeNode<T> *node);
 
 public:
+    BinarySearchTree();
+
+    ~BinarySearchTree();
+
     BinaryTreeNode<T>* getRoot();
 
     BinaryTreeNode<T>* findMin();

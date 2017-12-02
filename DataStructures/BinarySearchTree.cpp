@@ -8,6 +8,11 @@
 using namespace std;
 
 template <class T>
+BinarySearchTree<T>::BinarySearchTree(){
+    this->root = NULL;
+}
+
+template <class T>
 BinaryTreeNode<T>* BinarySearchTree<T>::getRoot() {
     return root;
 }
@@ -112,4 +117,9 @@ void BinarySearchTree<T>::printPostOrder(BinaryTreeNode<T> *node) {
         printPostOrder(node->getRight());
         cout << node->getData() << ", ";
     }
+}
+
+template <class T>
+BinarySearchTree<T>::~BinarySearchTree() {
+
 }
